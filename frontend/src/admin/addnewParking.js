@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { isLoggedInCheck } from "../user/isLoggedInCheck";
 
 const AddParking = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [parkings, setParkings] = useState([]);
+
+  const [refresh, setRefresh] = useState(false);
 
   const [city, setCity] = useState([]);
 
@@ -32,7 +34,7 @@ const AddParking = () => {
         location,
         slots,
         parkingName,
-        vehicletype:vehicleType
+        vehicletype: vehicleType,
       })
       .then((response) => {
         const result = response.data;
@@ -42,29 +44,34 @@ const AddParking = () => {
       });
   };
 
-  const getParkinglist =async () => {
+  const getParkinglist = async () => {
     await axios
       .get("http://localhost:9095/parkingAdmin/getAllParkingAreaList")
       .then((response) => {
         const result = response.data;
-        console.log(result.data);
+        //console.log(result.data);
         setParkings(result.data);
         setParkingId(result.data.parkingId);
+        setRefresh(!refresh);
       });
   };
 
+  useEffect(() => {
+    getParkinglist();
+  }, [refresh]);
+
   return (
-    <div >
+    <div>
       <table>
         <tr>
           <td>
-            <div >
-              <div className="login" >
-                <h1 >Parking List</h1>
-                <table >
+            <div>
+              <div className="login">
+                <h1>Parking List</h1>
+                <table>
                   <thead>
                     <tr>
-                      <th> parkingId</th>
+                      <th> parking Id</th>
                       <th>city</th>
                       <th> location</th>
                       <th>slots</th>
@@ -90,11 +97,11 @@ const AddParking = () => {
               </div>
             </div>
           </td>
-          <td ></td>
+          <td></td>
           <td>
-            <div  className="login">
-              <h1 >Add New Parking Area</h1>
-              <div >
+            <div className="login">
+              <h1>Add New Parking Area</h1>
+              <div>
                 <div className="mb-3">
                   <label>City</label>
                   <input
@@ -150,10 +157,8 @@ const AddParking = () => {
                   />
                 </div>
 
-                <div className="mb-3" >
-                  <button onClick={add} >
-                    Add Parking
-                  </button>
+                <div className="mb-3">
+                  <button onClick={add}>Add Parking</button>
                 </div>
               </div>
             </div>
@@ -166,7 +171,7 @@ const AddParking = () => {
 const styles = {
   container: {
     color: "black",
-    backgroundColor:'grey',
+    backgroundColor: "grey",
     width: 400,
     height: 480,
     padding: 20,

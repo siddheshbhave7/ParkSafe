@@ -5,28 +5,22 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { getCookiesObject } from "../user/getCookieObject";
 
-
 const Admin = () => {
   const navigate = useNavigate();
-  const [cookie ,setCookie] =useState(getCookiesObject());  
-  useEffect(()=>{
+  const [cookie, setCookie] = useState(getCookiesObject());
+  useEffect(() => {
     isLoggedInCheck(navigate);
-  },)
+  });
 
-
-
-
-  const logout=()=>{
-    Cookies.remove('user');
-    toast.success(cookie.firstName +" " + cookie.lastName +" Logged Out");
-    navigate('/signin');
-  }
-
-
+  const logout = () => {
+    Cookies.remove("user");
+    toast.success(cookie.firstName + " " + cookie.lastName + " Logged Out");
+    navigate("/signin");
+  };
 
   return (
     <div className="login">
-      <h1 >Get All User Details</h1>
+      <h1>Get All User Details</h1>
       <button
         className="btn btn-primary"
         onClick={() => {
@@ -43,19 +37,7 @@ const Admin = () => {
           navigate("/getStaff");
         }}
       >
-        Staff 
-      </button>
-
-
-
-      <h1 >View collection by date</h1>
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          navigate("/getCollection");
-        }}
-      >
-        view
+        Staff
       </button>
 
       <h1>Update Fare</h1>
@@ -78,11 +60,15 @@ const Admin = () => {
         ADD
       </button>
 
-        <h2>View Feedbacks</h2>
-        <button className="btn btn-primary" onClick={()=>{
-          navigate("/getfeedback")
-        }}>view Feedback</button>
-        
+      <h2>View Feedbacks</h2>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          navigate("/getfeedback");
+        }}
+      >
+        view Feedback
+      </button>
 
       <button onClick={logout}> Logout</button>
     </div>
