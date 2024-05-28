@@ -37,7 +37,6 @@ public class ParkingService {
 	    pay.setAmount(duration*fare);
 	    Payment payment = new Payment(new Booking( pay.getBookingid()),pay.getAmount());
 	    paymentRepo.save(payment);
-
 	    	return "success";
 	}
 	

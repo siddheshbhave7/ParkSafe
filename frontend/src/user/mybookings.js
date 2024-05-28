@@ -14,7 +14,7 @@ const Mybookings = () => {
 
   const cancelBooking = async (id) => {
     try {
-      await axios
+      await axios 
         .post(`http://localhost:9095/parkingUser/cancelBooking/${id}`)
         .then((response) => {
           setRefresh(!refresh);

@@ -76,8 +76,8 @@ const Receipt = () => {
         setLogin(true);
       })
       .catch((error) => {
-        console.log(error.data);
-        toast.success("Payment successfully done");
+        console.log(error);
+        toast.error("Payment Unsuccessfully");
       });
   };
 

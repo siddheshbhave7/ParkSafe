@@ -24,7 +24,7 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@PostMapping(value="/getPayment/{userid}") 
-	public ResponseEntity<?> generatePayment(@PathVariable("userid") Long user ,@RequestBody PaymentDto pay)
+	public ResponseEntity<?> generatePayment(@PathVariable("	") Long user ,@RequestBody PaymentDto pay)
 	{
 	    String payment = parkService.fetchPayment(user,pay);
 		return Response.success(payment);

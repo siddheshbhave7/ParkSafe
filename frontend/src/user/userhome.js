@@ -60,7 +60,7 @@ const Userhome = () => {
             "vehicle",
             JSON.stringify({
               slots: Number(slot),
-              vehicleNo,
+              vehicleNo : getvehicleNo,
               vehicleType,
               startTime: entry,
               exitTime: exit,

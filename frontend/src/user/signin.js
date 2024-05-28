@@ -60,8 +60,8 @@ const Signin = () => {
             // send the action
             // dispatch(signin(user))
             toast.success("Welcome " + (firstName + " " + lastName));
-            if (user.userRole === "user") navigate("/myhome");
-            if (user.userRole === "admin") navigate("/admin");
+            if (user.userRole === "USER") navigate("/myhome");
+            if (user.userRole === "ADMIN") navigate("/admin");
             if (user.userRole === "staff") navigate("/bookings");
           }
         })

@@ -3,7 +3,6 @@ import Cookies from 'js-cookie'
 export let getCookiesObject =()=>{
 
     const userCookie = Cookies.get('user');
-
     return userCookie ? JSON.parse(userCookie) : null;
 }
 
